@@ -17,12 +17,13 @@ const TabLayout = () => {
           },
           tabBarLabelStyle: {
             fontFamily: "DynaPuff_400Regular",
+            width: 50,
           },
           tabBarPosition: isLargeScreen ? 'left' : 'bottom',       
           tabBarVariant: isLargeScreen ? 'material' : 'uikit',
           tabBarLabelPosition: 'below-icon', 
       }}>
-          {renderTab("index", "Library", "library")}
+          {renderTab("index", "Library", "library-outline")}
           {renderTab("FavoritesScreen", "Favorites", "star-outline")}
           {renderTab("SettingsScreen", "Settings", "settings-outline")}
           {renderTab("HelpScreen", "Help", "help-circle-outline")}

@@ -10,7 +10,6 @@ const LibraryScreen = () => {
     return (
         <View>
             <ScreenHeader headerTitle="LIBRARY"/>
-            {/* <Text style={{fontFamily: DynaPuff_400Regular}}></Text> */}
         </View>
     );
 }
