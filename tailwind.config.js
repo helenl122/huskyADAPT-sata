@@ -10,7 +10,10 @@ module.exports = {
         dp_bold: ["DynaPuff_700Bold"],
       },
       colors: {
-        primary: "#1E40AF",
+        fontColor: 'black',
+        selectedTabFontColor: "#1D5AD0",
+        selectedTabBGColor: "#7090C133",
+        tabBGColor: "#DDEEFA",
       },
     },
   },

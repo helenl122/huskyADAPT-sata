@@ -2,7 +2,7 @@ import {Text} from "react-native";
 
 const ScreenHeader = (props: any) => {
     return (
-        <Text className="text-5xl font-dp_bold">{props.headerTitle}</Text>
+        <Text className="text-5xl font-dp_bold mt-2 ml-4">{props.headerTitle}</Text>
     );
 }
 
