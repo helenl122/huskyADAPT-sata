@@ -1,6 +1,8 @@
 import {Tabs} from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useWindowDimensions } from "react-native";
+import { DynaPuff_400Regular } from "@expo-google-fonts/dynapuff";
+
 
 const TabLayout = () => {
   const width = useWindowDimensions().width;
@@ -9,12 +11,16 @@ const TabLayout = () => {
       <Tabs screenOptions={{
           tabBarInactiveTintColor: '#000000',
           tabBarActiveTintColor: '#1D5AD0',
-          tabBarActiveBackgroundColor: '#7090C1',
+          tabBarActiveBackgroundColor: '#7090C133',
           tabBarStyle: {
               backgroundColor: '#DDEEFA',
           },
-          tabBarPosition: isLargeScreen ? 'left' : 'bottom',
-          tabBarLabelPosition: 'beside-icon',            
+          tabBarLabelStyle: {
+            fontFamily: "DynaPuff_400Regular",
+          },
+          tabBarPosition: isLargeScreen ? 'left' : 'bottom',       
+          tabBarVariant: isLargeScreen ? 'material' : 'uikit',
+          tabBarLabelPosition: 'below-icon', 
       }}>
           {renderTab("index", "Library", "library")}
           {renderTab("FavoritesScreen", "Favorites", "star-outline")}
@@ -32,7 +38,7 @@ const renderTab = (screenName: string, screenTitle: string, iconName: any) => (
       headerShown: false,
       tabBarLabel: screenTitle,
       tabBarAccessibilityLabel: screenTitle,
-      tabBarIcon: () => <Ionicons name={iconName}/>,
+      tabBarIcon: ({color, size}) => <Ionicons name={iconName} color={color} size={size}/>,
     }}
   />
 );
