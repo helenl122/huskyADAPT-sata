@@ -1,15 +1,40 @@
 import {Tabs} from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useWindowDimensions } from "react-native";
 
 const TabLayout = () => {
-    return (
-        <Tabs>
-            <Tabs.Screen name="screens/LibraryScreen" options={{title: "Library", tabBarIcon: (() => <Ionicons name="library"/>), tabBarActiveTintColor: "blue", tabBarAccessibilityLabel:"Library"}}/>
-            <Tabs.Screen name="screens/FavoritesScreen" options={{title: "Favorites", tabBarIcon: (() => <Ionicons name="star-outline"/>), tabBarActiveTintColor: "blue", tabBarAccessibilityLabel:"Favorites"}}/>
-            <Tabs.Screen name="screens/SettingsScreen" options={{title: "Settings", tabBarIcon: (() => <Ionicons name="settings-outline"/>), tabBarActiveTintColor: "blue", tabBarAccessibilityLabel:"Settings"}}/>
-            <Tabs.Screen name="screens/HelpScreen" options={{title: "Help", tabBarIcon: (() => <Ionicons name="help-circle-outline"/>), tabBarActiveTintColor: "blue", tabBarAccessibilityLabel:"Help"}}/>
-        </Tabs> 
-    );
-}
+  const width = useWindowDimensions().width;
+  const isLargeScreen = (width >= 768);
+  return (
+      <Tabs screenOptions={{
+          tabBarInactiveTintColor: '#000000',
+          tabBarActiveTintColor: '#1D5AD0',
+          tabBarActiveBackgroundColor: '#7090C1',
+          tabBarStyle: {
+              backgroundColor: '#DDEEFA',
+          },
+          tabBarPosition: isLargeScreen ? 'left' : 'bottom',
+          tabBarLabelPosition: 'beside-icon',            
+      }}>
+          {renderTab("index", "Library", "library")}
+          {renderTab("FavoritesScreen", "Favorites", "star-outline")}
+          {renderTab("SettingsScreen", "Settings", "settings-outline")}
+          {renderTab("HelpScreen", "Help", "help-circle-outline")}
+      </Tabs> 
+  );
+  }
+
+// Function to render each tab in tab bar
+const renderTab = (screenName: string, screenTitle: string, iconName: any) => (
+  <Tabs.Screen 
+    name={screenName}
+    options={{
+      headerShown: false,
+      tabBarLabel: screenTitle,
+      tabBarAccessibilityLabel: screenTitle,
+      tabBarIcon: () => <Ionicons name={iconName}/>,
+    }}
+  />
+);
 
 export default TabLayout;
