@@ -24,6 +24,7 @@ const TabLayout = () => {
         // tab bar label adjustments
         tabBarLabelStyle: {
           fontFamily: "DynaPuff_400Regular",
+          width: 50,
         },
         // adjust tab bar position & layout
         tabBarPosition: isLargeScreen ? 'left' : 'bottom',       
