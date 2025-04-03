@@ -1,9 +1,9 @@
 import "../global.css"
 import { DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold } from "@expo-google-fonts/dynapuff";
 import { useFonts } from "expo-font";
-import ScreenHeader from "@/components/screenHeader";
+import ScreenHeader from "@/components/ScreenHeader";
 import { ScrollView, useWindowDimensions, View, FlatList } from "react-native";
-import GameTile from "@/components/gameTile";
+import GameTile from "@/components/GameTile";
 const gameData = require('./(games)/gamesData');
 
 const LibraryScreen = () => {

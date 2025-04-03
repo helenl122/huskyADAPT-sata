@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, Modal, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface GameTileProps {
@@ -13,7 +13,7 @@ interface GameTileProps {
 const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite} : GameTileProps) => {
     return (
         <View className="mx-5 my-3">
-            <TouchableOpacity style={{flexDirection: "column", justifyContent:"center", alignContent: "center", flexWrap: "wrap", backgroundColor: tileColor, width: tileSize, height: tileSize, borderRadius:10 }} onPress={()=>{}}>
+            <TouchableOpacity className="flex-col justify-center flex-wrap content-center" style={{backgroundColor: tileColor, width: tileSize, height: tileSize, borderRadius:10 }} onPress={()=>{}}>
                 {/* on click, should open up game info */}
             {/* <TouchableOpacity style={{width: tileSize, height: tileSize, backgroundColor: tileColor}}> */}
                 <MaterialCommunityIcons style={{display: "flex", flexDirection: "row", justifyContent: "center"}} name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>

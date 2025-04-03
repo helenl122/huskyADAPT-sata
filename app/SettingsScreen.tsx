@@ -1,4 +1,4 @@
-import ScreenHeader from "@/components/screenHeader";
+import ScreenHeader from "@/components/ScreenHeader";
 
 const SettingsScreen = () => {
     return (
