@@ -1,6 +1,6 @@
 import {ScrollView, FlatList, useWindowDimensions } from "react-native"
 import GameTile from "@/components/GameTile";
-const gameData = require('../app/(games)/gamesData');
+const gameData = require('../assets/gamesData');
 
 const TileView = ({favoriteScreen}) => {    
     const width = useWindowDimensions().width;
@@ -19,18 +19,22 @@ const TileView = ({favoriteScreen}) => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 data={gameData}
-                keyExtractor = {(game) => game.gameName}
+                keyExtractor = {(game) => game.gamePath}
                 renderItem = {({item}) => {
                     // condition to check if displaying on favorites screen
                     if (!favoriteScreen || (favoriteScreen && item.favorite)) {
                         return (
                             <GameTile
+                                gamePath = {item.gamePath}
                                 tileSize = {Math.floor((width*0.8)/numCols)}
                                 gameName = {item.gameName}
                                 tileColor = {item.tileColor}
                                 iconName = {item.iconName}
                                 iconColor = {item.iconColor}
                                 favorite = {item.favorite}
+                                theme = {item.theme}
+                                description = {item.description}
+                                switchType = {item.switchType}
                             />
                         );
                     }           

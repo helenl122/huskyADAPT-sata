@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 const GamesLayout = () => {
     const router = useRouter();
     return (
-        // Game screen back button (to library) in header      
+        // Game screen back button (to home) in header      
         <Stack
             screenOptions={{
                 headerShown: true,

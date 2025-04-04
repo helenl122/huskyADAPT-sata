@@ -4,19 +4,35 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
 
 interface GameTileProps {
+    gamePath: string;
     gameName: string;
     iconName: any;
     iconColor: string;
     tileColor: string;
     tileSize: number;
     favorite: boolean;
+    theme: string;
+    description: string;
+    switchType: string;
 }
 
-const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite} : GameTileProps) => {
+const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
+                    favorite, theme, description, switchType} : GameTileProps) => {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View className="mx-5 my-4">
-            <InfoScreen modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+            {/* Pop Up Window: Game information */}
+            <InfoScreen
+                gamePath={gamePath}
+                gameName={gameName}
+                iconName={iconName}
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                theme={theme}
+                description={description}
+                switchType={switchType}
+            />
+            {/* Tile design elements: icons & text */}
             <TouchableOpacity
                 // style icon & game name in center of tile
                 className="flex-row justify-center flex-wrap content-center"

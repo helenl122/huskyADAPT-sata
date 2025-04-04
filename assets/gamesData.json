@@ -1,0 +1,68 @@
+[
+    {
+        "gamePath": "BalloonGame",
+        "gameName": "Pop The Balloon",
+        "iconName": "balloon",
+        "iconColor": "#005463",
+        "tileColor": "#32C1DA",
+        "favorite": true,
+        "theme": "Cause & Effect",
+        "description": "Press the button on the switch to pop the balloons!",
+        "switchType": "Single-Button Switch"
+    },
+    {
+        "gamePath": "RoadGame",
+        "gameName": "Crossy Roads",
+        "iconName": "road-variant",
+        "iconColor": "#712500",
+        "tileColor": "#E96E32",
+        "favorite": false,
+        "theme": "NA",
+        "description": "NA",
+        "switchType": "NA"
+    },
+    {
+        "gamePath": "ShapesGame",
+        "gameName": "Sorting Game",
+        "iconName": "shape-outline",
+        "iconColor": "#154D00",
+        "tileColor": "#6FB256",
+        "favorite": false,
+        "theme": "NA",
+        "description": "NA",
+        "switchType": "NA"
+    },
+    {
+        "gamePath": "/",
+        "gameName": "Treasure Hunt",
+        "iconName": "shovel",
+        "iconColor": "#5E0C2E",
+        "tileColor": "#C75785",
+        "favorite": false,
+        "theme": "NA",
+        "description": "NA",
+        "switchType": "NA"
+    },
+    {
+        "gamePath": "/",
+        "gameName": "Stacking Blocks",
+        "iconName": "grid",
+        "iconColor": "#949DEC",
+        "tileColor": "#323973",
+        "favorite": false,
+        "theme": "NA",
+        "description": "NA",
+        "switchType": "NA"
+    },
+    {
+        "gamePath": "/",
+        "gameName": "Music Play",
+        "iconName": "music",
+        "iconColor": "#740600",
+        "tileColor": "#FF5F57",
+        "favorite": false,
+        "theme": "NA",
+        "description": "NA",
+        "switchType": "NA"
+    }
+]
