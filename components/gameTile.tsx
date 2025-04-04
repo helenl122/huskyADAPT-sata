@@ -46,6 +46,7 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
             >
                 {/* display star if game is favorited*/}
                 {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star"} color={"#F9D232"} size={Math.floor(tileSize/5)}/> : <View></View>}
+                {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star-outline"} color={"#black"} size={Math.floor(tileSize/5)}/> : <View></View>}
                 <MaterialCommunityIcons name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
                 <Text
                     className="p-3 font-dp_bold text-white"
