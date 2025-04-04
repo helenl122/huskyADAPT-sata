@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, Modal, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
 

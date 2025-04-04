@@ -1,8 +1,10 @@
-import { Text, View, Modal, TouchableOpacity, useWindowDimensions } from "react-native";
+import { Text, View, Modal, TouchableOpacity, useWindowDimensions, Button } from "react-native";
+import { useRouter } from 'expo-router';
 
 const InfoScreen = ({modalVisible, setModalVisible}) => {
     const w = useWindowDimensions().width;
     const h = useWindowDimensions().height;
+    const router = useRouter();
     return (
         <Modal
             animationType="fade"
@@ -24,6 +26,8 @@ const InfoScreen = ({modalVisible, setModalVisible}) => {
                     <TouchableOpacity onPress={() => setModalVisible(false)}>
                         <Text>Close</Text>
                     </TouchableOpacity>
+                    <Button title="Play" onPress={() => {setModalVisible(false); router.navigate('/RoadGame');}}/>
+                    {/* <Button title="Favorite" onPress={() => }/> */}
                 </View>
             </View>
         </Modal>

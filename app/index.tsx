@@ -1,4 +1,4 @@
-import "../global.css"
+import "@/global.css"
 import { DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold } from "@expo-google-fonts/dynapuff";
 import { useFonts } from "expo-font";
 import ScreenHeader from "@/components/ScreenHeader";
