@@ -1,8 +1,13 @@
+import TileView from "@/components/TileView";
 import ScreenHeader from "@/components/ScreenHeader";
+import { View } from "react-native";
 
 const FavoritesScreen = () => {
     return (
-        <ScreenHeader headerTitle="Favorites"/>
+        <View>
+            <ScreenHeader headerTitle="Favorites"/>
+            <TileView favoriteScreen={true}/>
+        </View>
     );
 }
 

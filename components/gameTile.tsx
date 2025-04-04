@@ -1,5 +1,7 @@
+import React, {useState} from 'react';
 import { Text, View, Modal, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import InfoScreen from './InfoScreen';
 
 interface GameTileProps {
     gameName: string;
@@ -11,14 +13,35 @@ interface GameTileProps {
 }
 
 const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite} : GameTileProps) => {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View className="mx-5 my-3">
-            <TouchableOpacity className="flex-col justify-center flex-wrap content-center" style={{backgroundColor: tileColor, width: tileSize, height: tileSize, borderRadius:10 }} onPress={()=>{}}>
-                {/* on click, should open up game info */}
-            {/* <TouchableOpacity style={{width: tileSize, height: tileSize, backgroundColor: tileColor}}> */}
-                <MaterialCommunityIcons style={{display: "flex", flexDirection: "row", justifyContent: "center"}} name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
-                <Text className="p-0 m-0 font-dp_bold stroke-100 drop-shadow-sm" style={{flexDirection: "row", justifyContent: "center", fontSize: Math.floor(tileSize/10), textShadowRadius: 3, textShadowOffset: {width: -2, height: 2}, textShadowColor: "black", color: "white"}}>{gameName.toUpperCase()}</Text>
-                {/* For favorites, have star that toggles on/off */}
+        <View className="mx-5 my-4">
+            <InfoScreen modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+            <TouchableOpacity
+                // style icon & game name in center of tile
+                className="flex-row justify-center flex-wrap content-center"
+                style={{
+                    backgroundColor: tileColor,
+                    width: tileSize,
+                    height: tileSize,
+                    borderRadius:10 
+                }}
+                onPress={()=>{setModalVisible(true)}} // open up game info
+            >
+                {/* display star if game is favorited*/}
+                {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star"} color={"#F9D232"} size={Math.floor(tileSize/5)}/> : <View></View>}
+                <MaterialCommunityIcons name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
+                <Text
+                    className="p-3 font-dp_bold text-white"
+                    style={{
+                        fontSize: Math.floor(tileSize/10),
+                        textShadowOffset: {width: -3, height: 3},
+                        textShadowRadius: 3,
+                        textShadowColor: "black"
+                    }}
+                >
+                    {gameName.toUpperCase()}
+                </Text>
             </TouchableOpacity>
         </View>
     );

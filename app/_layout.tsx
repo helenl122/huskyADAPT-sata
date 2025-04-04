@@ -1,6 +1,7 @@
 import {Tabs} from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { useWindowDimensions, SafeAreaView } from "react-native";
+import { useWindowDimensions, SafeAreaView, Text } from "react-native";
+
 // import app design colors
 const tailwindConfig = require('@/tailwind.config.js'); 
 const colors = tailwindConfig.theme.extend.colors;

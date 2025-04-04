@@ -4,7 +4,7 @@
         "iconName": "balloon",
         "iconColor": "#005463",
         "tileColor": "#32C1DA",
-        "favorite": false
+        "favorite": true
     },
     {
         "gameName": "Crossy Roads",
