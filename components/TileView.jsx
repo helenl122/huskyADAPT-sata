@@ -1,11 +1,15 @@
 import {ScrollView, FlatList, useWindowDimensions } from "react-native"
 import GameTile from "@/components/GameTile";
+import {useState} from "react"
+import { useIsFocused } from '@react-navigation/native';
 const gameData = require('../assets/gamesData');
 
-const TileView = ({favoriteScreen}) => {    
+const TileView = ({favoriteScreen}) => {
+    const isFocused = useIsFocused(); // to refresh TileView
     const width = useWindowDimensions().width;
     const isLargeScreen = (width >= 768);
-    const numCols = (isLargeScreen) ? 3 : 1 // 3 col if tablet/desktop, 1 col if mobile
+    const numCols = (isLargeScreen) ? 3 : 1 // 3 for tablet/desktop, 1 for mobile
+    const [starShow, setStarShow] = useState(0); // set star to show up for favorites
     return (
         <ScrollView
             horizontal
@@ -18,9 +22,10 @@ const TileView = ({favoriteScreen}) => {
                 numColumns={numCols}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                extraData={starShow}
                 // Displaying each game data
                 data={gameData}
-                keyExtractor = {(game) => game.gamePath}
+                keyExtractor = {(game) => game.gameName}
                 renderItem = {({item}) => {
                     // condition to check if displaying on favorites screen
                     if (!favoriteScreen || (favoriteScreen && item.favorite)) {
@@ -36,6 +41,8 @@ const TileView = ({favoriteScreen}) => {
                                 theme = {item.theme}
                                 description = {item.description}
                                 switchType = {item.switchType}
+                                starShow = {starShow}
+                                setStarShow = {setStarShow}
                             />
                         );
                     }           

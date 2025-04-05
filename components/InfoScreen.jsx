@@ -1,12 +1,15 @@
-import { Text, View, Modal, TouchableOpacity, useWindowDimensions, Button } from "react-native";
+import { Text, View, Modal, TouchableOpacity, useWindowDimensions } from "react-native";
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+const gameData = require('../assets/gamesData');
 
-const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVisible, setModalVisible, theme, description, switchType}) => {
+const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVisible,
+        setModalVisible, theme, description, switchType, starShow, setStarShow}) => {
     const w = useWindowDimensions().width;
     const isLargeScreen = (w >=768) ? true : false
     const h = useWindowDimensions().height;
     const router = useRouter();
+    
     return (
         <Modal
             animationType="fade"
@@ -37,7 +40,7 @@ const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVi
                         {gameInfoItem("gesture-tap-button", "switch: ", switchType)}
                         {/* Play game and favorite buttons */}
                         <View className="flex-row justify-around py-10" style={{width: w*0.8}}>
-                            {infoScreenButton("Favorite", tileColor, () => {}, "star-outline", isLargeScreen)}
+                            {infoScreenButton("Favorite", tileColor, ()=>{favoriteGame(gameName); setStarShow(starShow+1); setModalVisible(false);}, "star-outline", isLargeScreen)}
                             {infoScreenButton("Play", tileColor, () => {setModalVisible(false); router.navigate(gamePath);}, "play-circle", isLargeScreen)}
                         </View>
                     </View>
@@ -56,7 +59,7 @@ const gameInfoItem = (itemIcon, itemName, itemContent) => {
     const w = useWindowDimensions().width;
     return (
         <View className="flex-row justify-center mt-1" style={{width: w*0.8}}>
-            <MaterialCommunityIcons className="mx-1 ml-5" name={itemIcon} size={20}/>
+            <MaterialCommunityIcons className=" mx-1 md:my-1 md:mx-2" name={itemIcon} size={20}/>
             <Text className="font-dp_semibold text-sm md:text-lg">{itemName}</Text>
             <Text className="text-wrap mr-5 font-dp_reg text-sm md:text-lg">{itemContent}</Text>
         </View>
@@ -75,6 +78,18 @@ const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => 
             <Text className="text-white text-2xl font-dp_reg">{title}</Text>
         </TouchableOpacity>
     );
+}
+
+// helper function for favoriting a game
+const favoriteGame = (gameName) => {
+    // get the game data by game name
+    const game = gameData.find(item => item.gameName === gameName);
+    game.favorite = !game.favorite // toggle favorite boolean
+    // overwrite game data for this game with new data
+    gameData.map(item => game.gameName === game.gameName ? game : item);
+    // save these udpates
+    localStorage.setItem("../assets/gamesData.json",
+                            JSON.stringify(gameData, null, 2));
 }
 
 export default InfoScreen;

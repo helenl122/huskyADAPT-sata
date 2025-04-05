@@ -11,7 +11,7 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "/",
+        "gamePath": "BlockGame",
         "gameName": "Stacking Blocks",
         "iconName": "grid",
         "iconColor": "#712500",
@@ -44,7 +44,7 @@
         "switchType": "NA"
     },
     {
-        "gamePath": "RoadGame",
+        "gamePath": "/",
         "gameName": "Crossy Roads",
         "iconName": "road-variant",
         "iconColor": "#949DEC",

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, createContext} from 'react';
 import { Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
@@ -14,10 +14,12 @@ interface GameTileProps {
     theme: string;
     description: string;
     switchType: string;
+    starShow: number;
+    setStarShow: any;
 }
 
 const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
-                    favorite, theme, description, switchType} : GameTileProps) => {
+                    favorite, theme, description, switchType, starShow, setStarShow} : GameTileProps) => {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View className="mx-5 my-4">
@@ -33,6 +35,8 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
                 theme={theme}
                 description={description}
                 switchType={switchType}
+                starShow={starShow}
+                setStarShow={setStarShow}
             />
             {/* Tile design elements: icons & text */}
             <TouchableOpacity

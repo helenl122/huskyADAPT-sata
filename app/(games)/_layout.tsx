@@ -18,7 +18,7 @@ const GamesLayout = () => {
         >
             {/* Hide game names in header screens*/}
             <Stack.Screen name="BalloonGame" options={{ headerTitle: ""}} />
-            <Stack.Screen name="RoadGame" options={{ headerTitle: ""}} />
+            <Stack.Screen name="BlockGame" options={{ headerTitle: ""}} />
             <Stack.Screen name="ShapesGame" options={{ headerTitle: ""}} />
         </Stack>
     );
