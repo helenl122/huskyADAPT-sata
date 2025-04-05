@@ -43,7 +43,7 @@ const InfoScreen = ({setModalVisible, modalVisible}) => {
                         {gameInfoItem("gesture-tap-button", "switch: ", switchType)}
                         {/* Play game and favorite buttons */}
                         <View className="flex-row justify-around py-10" style={{width: w*0.8}}>
-                            {infoScreenButton("Favorite", tileColor, ()=>{favoriteGame(gameName); setStarShow(starShow+1); setModalVisible(false);}, "star-outline", isLargeScreen)}
+                            {favoriteButton(gameName, tileColor, ()=>{favoriteGame(gameName); setStarShow(starShow+1);}, "star-outline", isLargeScreen)}
                             {infoScreenButton("Play", tileColor, () => {setModalVisible(false); router.navigate(gamePath);}, "play-circle", isLargeScreen)}
                         </View>
                     </View>
@@ -69,7 +69,7 @@ const gameInfoItem = (itemIcon, itemName, itemContent) => {
     );
 }
 
-// helper function for creating the buttons on info screen
+// helper function for creating buttons on info screen
 const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => {
     return (
         <TouchableOpacity
@@ -79,6 +79,28 @@ const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => 
         >
             {(showIcon)? <MaterialCommunityIcons className="mr-2 color-white size-[30]" name={buttonIcon} size={30}/> : null}
             <Text className="text-white text-2xl font-dp_reg">{title}</Text>
+        </TouchableOpacity>
+    );
+}
+// helper function for creating favorite button on info screen
+const favoriteButton = (gameName, tileColor, pressFunc, buttonIcon, showIcon) => {
+    // get the game data by game name
+    const game = gameData.find(item => item.gameName === gameName);
+    const title = game.favorite ? "Unfavorite" : "Favorite";    
+    return (
+        <TouchableOpacity
+            onPress={pressFunc}
+            className="flex-row justify-center items-center rounded-[10] md:w-[230] md:h-[100] w-[150] h-[50]"
+            style={{
+                borderWidth: !game.favorite ? 5 : null,
+                borderColor: !game.favorite ? tileColor : null,
+                backgroundColor: game.favorite ? tileColor: "white",
+            }}
+        >
+            {(showIcon)? <MaterialCommunityIcons className="mr-2 size-[30]" style={{color: game.favorite? "white" : tileColor}} name={buttonIcon} size={30}/> : null}
+            <Text className="text-2xl font-dp_reg" style={{color: game.favorite ? "white" : tileColor}}>
+                {title}
+            </Text>
         </TouchableOpacity>
     );
 }
