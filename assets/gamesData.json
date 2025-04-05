@@ -7,7 +7,7 @@
         "tileColor": "#32C1DA",
         "favorite": true,
         "theme": "Cause & Effect",
-        "description": "Press the button on the switch to pop the balloons!",
+        "description": "Press the switch to pop the balloons!",
         "switchType": "Single-Button Switch"
     },
     {
@@ -17,9 +17,9 @@
         "iconColor": "#712500",
         "tileColor": "#E96E32",
         "favorite": false,
-        "theme": "NA",
-        "description": "NA",
-        "switchType": "NA"
+        "theme": "Hand-eye Coordination",
+        "description": "Press the switch to stack blocks as tall as you can!",
+        "switchType": "Single-Button Switch"
     },
     {
         "gamePath": "ShapesGame",
@@ -28,9 +28,9 @@
         "iconColor": "#154D00",
         "tileColor": "#6FB256",
         "favorite": true,
-        "theme": "NA",
-        "description": "NA",
-        "switchType": "NA"
+        "theme": "Classification",
+        "description": "Press the switch to sort objects into the correct categories!",
+        "switchType": "Single-Button Switch"
     },
     {
         "gamePath": "/",
