@@ -1,43 +1,17 @@
-import {useState, createContext} from 'react';
+import {useState} from 'react';
+import {useTileContext, TileContext} from './TileContext';
 import { Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
 
-interface GameTileProps {
-    gamePath: string;
-    gameName: string;
-    iconName: any;
-    iconColor: string;
-    tileColor: string;
-    tileSize: number;
-    favorite: boolean;
-    theme: string;
-    description: string;
-    switchType: string;
-    starShow: number;
-    setStarShow: any;
-}
-
-const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
-                    favorite, theme, description, switchType, starShow, setStarShow} : GameTileProps) => {
+const GameTile = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const currGame = useTileContext(TileContext);
+    const {tileColor, tileSize, favorite, iconName, iconColor, gameName} = currGame;
     return (
         <View className="mx-5 my-4">
             {/* Pop Up Window: Game information */}
-            <InfoScreen
-                gamePath={gamePath}
-                gameName={gameName}
-                iconName={iconName}
-                iconColor={iconColor}
-                tileColor={tileColor}
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                theme={theme}
-                description={description}
-                switchType={switchType}
-                starShow={starShow}
-                setStarShow={setStarShow}
-            />
+            <InfoScreen setModalVisible={setModalVisible} modalVisible={modalVisible}/>
             {/* Tile design elements: icons & text */}
             <TouchableOpacity
                 // style icon & game name in center of tile
@@ -70,7 +44,7 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
 }
 
 // helper function for star icon with outline
-const starOutline = (tileSize : number) => {
+const starOutline = (tileSize) => {
     const starPos = "absolute top-2 left-3";
     const starSize = Math.floor(tileSize/5);
     return (

@@ -1,6 +1,7 @@
 import {ScrollView, FlatList, useWindowDimensions } from "react-native"
 import GameTile from "@/components/GameTile";
-import {useState} from "react"
+import {useState} from "react";
+import {TileContext, GameTileProps} from "./TileContext";
 import { useIsFocused } from '@react-navigation/native';
 const gameData = require('../assets/gamesData');
 
@@ -29,25 +30,30 @@ const TileView = ({favoriteScreen}) => {
                 renderItem = {({item}) => {
                     // condition to check if displaying on favorites screen
                     if (!favoriteScreen || (favoriteScreen && item.favorite)) {
+                        const {gamePath, gameName, iconName, iconColor, tileColor,
+                            favorite, theme, description, switchType} = item;
+                        const currGame = {
+                            gamePath: gamePath,
+                            gameName: gameName,
+                            iconName: iconName,
+                            iconColor: iconColor,
+                            tileColor: tileColor,
+                            tileSize: Math.floor((width*0.8)/numCols),
+                            favorite: favorite,
+                            theme: theme,
+                            description: description,
+                            switchType: switchType,
+                            starShow: starShow,
+                            setStarShow: setStarShow
+                        };
                         return (
-                            <GameTile
-                                gamePath = {item.gamePath}
-                                tileSize = {Math.floor((width*0.8)/numCols)}
-                                gameName = {item.gameName}
-                                tileColor = {item.tileColor}
-                                iconName = {item.iconName}
-                                iconColor = {item.iconColor}
-                                favorite = {item.favorite}
-                                theme = {item.theme}
-                                description = {item.description}
-                                switchType = {item.switchType}
-                                starShow = {starShow}
-                                setStarShow = {setStarShow}
-                            />
+                            <TileContext.Provider value={currGame}>
+                                <GameTile/>
+                            </TileContext.Provider>
                         );
                     }           
                 }}
-            />  
+            />
         </ScrollView>
     );
 }

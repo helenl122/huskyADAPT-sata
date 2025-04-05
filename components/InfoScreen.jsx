@@ -1,14 +1,17 @@
 import { Text, View, Modal, TouchableOpacity, useWindowDimensions } from "react-native";
 import { useRouter } from 'expo-router';
+import {useTileContext} from './TileContext';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 const gameData = require('../assets/gamesData');
 
-const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVisible,
-        setModalVisible, theme, description, switchType, starShow, setStarShow}) => {
+const InfoScreen = ({setModalVisible, modalVisible}) => {
     const w = useWindowDimensions().width;
     const isLargeScreen = (w >=768) ? true : false
     const h = useWindowDimensions().height;
-    const router = useRouter();
+    const router = useRouter(); // for moving to game play
+    // using GameTileProps in context (current game data)
+    const currGame = useTileContext();
+    const {tileColor, iconName, iconColor, gameName, gamePath, theme, description, switchType, starShow, setStarShow} = currGame;
     
     return (
         <Modal
