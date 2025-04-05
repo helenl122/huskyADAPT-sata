@@ -1,7 +1,6 @@
 import { Text, View, Modal, TouchableOpacity, useWindowDimensions, Button } from "react-native";
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Asset } from 'expo-asset';
 
 const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVisible, setModalVisible, theme, description, switchType}) => {
     const w = useWindowDimensions().width;
@@ -32,10 +31,7 @@ const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVi
                                             color={iconColor}/>
                         : null}
                         <Text className="font-dp_bold text-2xl md:text-5xl my-3">{gameName}</Text>
-                        {/* Game Info Details (theme, description, switch type) */}
-                        {/* <GameInfoItem itemIcon="lightbulb" itemName="theme: " itemContent={theme}/>
-                        <GameInfoItem itemIcon="format-list-bulleted" itemName="description: " itemContent={description}/>
-                        <GameInfoItem itemIcon="gesture-tap-button" itemName="switch: " itemContent={switchType}/> */}
+                        {/* Game Info Details (theme, description, switch type) */}                        
                         {gameInfoItem("lightbulb", "theme: ", theme)}
                         {gameInfoItem("format-list-bulleted", "description: ", description)}
                         {gameInfoItem("gesture-tap-button", "switch: ", switchType)}
@@ -55,7 +51,7 @@ const InfoScreen = ({gameName, gamePath, iconName, iconColor, tileColor, modalVi
     );
 }
 
-
+// helper function for each line of detail of game info
 const gameInfoItem = (itemIcon, itemName, itemContent) => {
     const w = useWindowDimensions().width;
     return (
@@ -67,6 +63,7 @@ const gameInfoItem = (itemIcon, itemName, itemContent) => {
     );
 }
 
+// helper function for creating the buttons on info screen
 const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => {
     return (
         <TouchableOpacity
