@@ -11,9 +11,9 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "RoadGame",
-        "gameName": "Crossy Roads",
-        "iconName": "road-variant",
+        "gamePath": "/",
+        "gameName": "Stacking Blocks",
+        "iconName": "grid",
         "iconColor": "#712500",
         "tileColor": "#E96E32",
         "favorite": false,
@@ -27,7 +27,7 @@
         "iconName": "shape-outline",
         "iconColor": "#154D00",
         "tileColor": "#6FB256",
-        "favorite": false,
+        "favorite": true,
         "theme": "NA",
         "description": "NA",
         "switchType": "NA"
@@ -44,9 +44,9 @@
         "switchType": "NA"
     },
     {
-        "gamePath": "/",
-        "gameName": "Stacking Blocks",
-        "iconName": "grid",
+        "gamePath": "RoadGame",
+        "gameName": "Crossy Roads",
+        "iconName": "road-variant",
         "iconColor": "#949DEC",
         "tileColor": "#323973",
         "favorite": false,

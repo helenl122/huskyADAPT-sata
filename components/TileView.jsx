@@ -18,6 +18,7 @@ const TileView = ({favoriteScreen}) => {
                 numColumns={numCols}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                // Displaying each game data
                 data={gameData}
                 keyExtractor = {(game) => game.gamePath}
                 renderItem = {({item}) => {

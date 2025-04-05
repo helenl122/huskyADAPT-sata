@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
@@ -26,6 +26,8 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
                 gamePath={gamePath}
                 gameName={gameName}
                 iconName={iconName}
+                iconColor={iconColor}
+                tileColor={tileColor}
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
                 theme={theme}
@@ -45,8 +47,7 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
                 onPress={()=>{setModalVisible(true)}} // open up game info
             >
                 {/* display star if game is favorited*/}
-                {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star"} color={"#F9D232"} size={Math.floor(tileSize/5)}/> : <View></View>}
-                {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star-outline"} color={"#black"} size={Math.floor(tileSize/5)}/> : <View></View>}
+                {(favorite) ?  starOutline(tileSize): null}
                 <MaterialCommunityIcons name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
                 <Text
                     className="p-3 font-dp_bold text-white"
@@ -62,6 +63,18 @@ const GameTile = ({gamePath, gameName, iconName, iconColor, tileColor, tileSize,
             </TouchableOpacity>
         </View>
     );
+}
+
+// helper function for star icon with outline
+const starOutline = (tileSize : number) => {
+    const starPos = "absolute top-2 left-3";
+    const starSize = Math.floor(tileSize/5);
+    return (
+        <View className={starPos}>
+            <MaterialCommunityIcons className={starPos} name={"star"} color={"#F9D232"} size={starSize}/>
+            <MaterialCommunityIcons className={starPos} name={"star-outline"} color={"#black"} size={starSize}/>
+        </View>
+    );  
 }
 
 export default GameTile;
