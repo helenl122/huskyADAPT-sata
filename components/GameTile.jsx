@@ -1,22 +1,18 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
+import {useTileContext, TileContext} from './TileContext';
 import { Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InfoScreen from './InfoScreen';
 
-interface GameTileProps {
-    gameName: string;
-    iconName: any;
-    iconColor: string;
-    tileColor: string;
-    tileSize: number;
-    favorite: boolean;
-}
-
-const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite} : GameTileProps) => {
+const GameTile = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const currGame = useTileContext(TileContext);
+    const {tileColor, tileSize, favorite, iconName, iconColor, gameName} = currGame;
     return (
         <View className="mx-5 my-4">
-            <InfoScreen modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+            {/* Pop Up Window: Game information */}
+            <InfoScreen setModalVisible={setModalVisible} modalVisible={modalVisible}/>
+            {/* Tile design elements: icons & text */}
             <TouchableOpacity
                 // style icon & game name in center of tile
                 className="flex-row justify-center flex-wrap content-center"
@@ -29,7 +25,7 @@ const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite}
                 onPress={()=>{setModalVisible(true)}} // open up game info
             >
                 {/* display star if game is favorited*/}
-                {(favorite) ? <MaterialCommunityIcons className="absolute top-2 left-2" name={"star"} color={"#F9D232"} size={Math.floor(tileSize/5)}/> : <View></View>}
+                {(favorite) ?  starOutline(tileSize): null}
                 <MaterialCommunityIcons name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
                 <Text
                     className="p-3 font-dp_bold text-white"
@@ -45,6 +41,18 @@ const GameTile = ({gameName, iconName, iconColor, tileColor, tileSize, favorite}
             </TouchableOpacity>
         </View>
     );
+}
+
+// helper function for star icon with outline
+const starOutline = (tileSize) => {
+    const starPos = "absolute top-2 left-3";
+    const starSize = Math.floor(tileSize/5);
+    return (
+        <View className={starPos}>
+            <MaterialCommunityIcons className={starPos} name={"star"} color={"#F9D232"} size={starSize}/>
+            <MaterialCommunityIcons className={starPos} name={"star-outline"} color={"#black"} size={starSize}/>
+        </View>
+    );  
 }
 
 export default GameTile;

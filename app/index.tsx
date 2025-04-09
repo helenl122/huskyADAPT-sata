@@ -10,7 +10,7 @@ const LibraryScreen = () => {
     const [fontsLoaded] = useFonts({DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold});
     return (
         <View>
-            <ScreenHeader headerTitle="LIBRARY"/>
+            <ScreenHeader headerTitle="Library"/>
             <TileView favoriteScreen={false}/>
         </View>
     );

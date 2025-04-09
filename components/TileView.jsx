@@ -1,11 +1,16 @@
 import {ScrollView, FlatList, useWindowDimensions } from "react-native"
 import GameTile from "@/components/GameTile";
-const gameData = require('../app/(games)/gamesData');
+import {useState} from "react";
+import {TileContext, GameTileProps} from "./TileContext";
+import { useIsFocused } from '@react-navigation/native';
+const gameData = require('../assets/gamesData');
 
-const TileView = ({favoriteScreen}) => {    
+const TileView = ({favoriteScreen}) => {
+    const isFocused = useIsFocused(); // to refresh TileView
     const width = useWindowDimensions().width;
     const isLargeScreen = (width >= 768);
-    const numCols = (isLargeScreen) ? 3 : 1 // 3 col if tablet/desktop, 1 col if mobile
+    const numCols = (isLargeScreen) ? 3 : 1 // 3 for tablet/desktop, 1 for mobile
+    const [starShow, setStarShow] = useState(0); // set star to show up for favorites
     return (
         <ScrollView
             horizontal
@@ -18,24 +23,37 @@ const TileView = ({favoriteScreen}) => {
                 numColumns={numCols}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                extraData={starShow}
+                // Displaying each game data
                 data={gameData}
                 keyExtractor = {(game) => game.gameName}
                 renderItem = {({item}) => {
                     // condition to check if displaying on favorites screen
                     if (!favoriteScreen || (favoriteScreen && item.favorite)) {
+                        const {gamePath, gameName, iconName, iconColor, tileColor,
+                            favorite, theme, description, switchType} = item;
+                        const currGame = {
+                            gamePath: gamePath,
+                            gameName: gameName,
+                            iconName: iconName,
+                            iconColor: iconColor,
+                            tileColor: tileColor,
+                            tileSize: Math.floor((width*0.8)/numCols),
+                            favorite: favorite,
+                            theme: theme,
+                            description: description,
+                            switchType: switchType,
+                            starShow: starShow,
+                            setStarShow: setStarShow
+                        };
                         return (
-                            <GameTile
-                                tileSize = {Math.floor((width*0.8)/numCols)}
-                                gameName = {item.gameName}
-                                tileColor = {item.tileColor}
-                                iconName = {item.iconName}
-                                iconColor = {item.iconColor}
-                                favorite = {item.favorite}
-                            />
+                            <TileContext.Provider value={currGame}>
+                                <GameTile/>
+                            </TileContext.Provider>
                         );
                     }           
                 }}
-            />  
+            />
         </ScrollView>
     );
 }
