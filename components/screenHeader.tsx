@@ -1,8 +1,10 @@
-import {Text} from "react-native";
+import {Text, View} from "react-native";
 
-const ScreenHeader = (props: any) => {
+const ScreenHeader = (prop : any) => {
     return (
-        <Text className="text-5xl font-dp_bold mt-2 ml-6">{props.headerTitle}</Text>
+        <View className="bg-white">
+            <Text className="text-5xl font-dp_bold mt-3 ml-6 p-2">{prop.headerTitle}</Text>
+        </View>
     );
 }
 

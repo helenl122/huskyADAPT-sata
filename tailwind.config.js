@@ -14,6 +14,7 @@ module.exports = {
         selectedTabFontColor: "#1D5AD0",
         selectedTabBGColor: "#7090C133",
         tabBGColor: "#DDEEFA",
+        starColor: "#F9D232",
       },
     },
   },
