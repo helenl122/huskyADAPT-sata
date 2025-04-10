@@ -1,6 +1,6 @@
 import { Stack, useRouter } from 'expo-router';
 import { Pressable } from 'react-native';
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const GamesLayout = () => {
     const router = useRouter();
@@ -9,14 +9,15 @@ const GamesLayout = () => {
         <Stack
             screenOptions={{
                 headerShown: true,
-                headerLeft: () => (
+                headerLeft: () => null, // hide left back button, since only want x on right
+                headerRight: () => (
                     <Pressable className="mx-5" onPress={() => router.replace('/')}>
-                        <Ionicons name={"arrow-back"} size={40}/>
+                        <MaterialCommunityIcons name={"close-circle"} size={40} color={"red"}/>
                     </Pressable>
                 ),
             }}
         >
-            {/* Hide game names in header screens*/}
+            {/* Hide game names & left back button in header screens*/}
             <Stack.Screen name="BalloonGame" options={{ headerTitle: ""}} />
             <Stack.Screen name="BlockGame" options={{ headerTitle: ""}} />
             <Stack.Screen name="ShapesGame" options={{ headerTitle: ""}} />
