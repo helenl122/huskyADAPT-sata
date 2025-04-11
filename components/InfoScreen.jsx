@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import {useTileContext} from './TileContext';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 const gameData = require('../assets/gamesData');
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const InfoScreen = ({setModalVisible, modalVisible}) => {
     const w = useWindowDimensions().width;
@@ -77,7 +78,7 @@ const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => 
             className="flex-row justify-center items-center rounded-[10] md:w-[230] md:h-[100] w-[115] h-[50]"
             style={{backgroundColor: tileColor}}
         >
-            {(showIcon)? <MaterialCommunityIcons className="mr-2 color-white size-[30]" name={buttonIcon} size={30}/> : null}
+            {(showIcon)? <MaterialCommunityIcons className="mr-2" name={buttonIcon} size={30} color={"white"}/> : null}
             <Text className="text-white text-2xl font-dp_reg">{title}</Text>
         </TouchableOpacity>
     );
@@ -113,7 +114,7 @@ const favoriteGame = (gameName) => {
     // overwrite game data for this game with new data
     gameData.map(item => game.gameName === game.gameName ? game : item);
     // save these udpates
-    localStorage.setItem("../assets/gamesData.json",
+    AsyncStorage.setItem("../assets/gamesData.json",
                             JSON.stringify(gameData, null, 2));
 }
 

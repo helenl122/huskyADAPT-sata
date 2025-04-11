@@ -1,8 +1,10 @@
-import {Text} from "react-native"
+import {Text, View} from "react-native"
 
 const BlockGame = () => {
     return (
-        <Text>Block Game</Text>
+        <View>
+            <Text>Block Game</Text>
+        </View>
     );
 }
 
