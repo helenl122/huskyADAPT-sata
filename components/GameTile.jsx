@@ -15,7 +15,7 @@ const GameTile = () => {
             {/* Tile design elements: icons & text */}
             <TouchableOpacity
                 // style icon & game name in center of tile
-                className="flex-row justify-center flex-wrap content-center"
+                className="flex-row justify-center flex-wrap content-center items-center"
                 style={{
                     backgroundColor: tileColor,
                     width: tileSize,

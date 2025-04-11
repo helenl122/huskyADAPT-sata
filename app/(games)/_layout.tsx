@@ -9,7 +9,7 @@ const GamesLayout = () => {
         <Stack
             screenOptions={{
                 headerShown: true,
-                headerBackVisible: false,
+                headerBackVisible: false, // hide left back button on iOS
                 headerLeft: () => null, // hide left back button, since only want x on right
                 headerRight: () => (
                     <Pressable className="mx-5" onPress={() => router.replace('/')}>

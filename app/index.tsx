@@ -5,9 +5,8 @@ import ScreenHeader from "@/components/ScreenHeader";
 import TileView from "@/components/TileView";
 import { View } from "react-native";
 
-
 const LibraryScreen = () => {
-    const [fontsLoaded] = useFonts({DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold});
+    const [fontsLoaded] = useFonts({DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold});    
     return (
         <View>
             <ScreenHeader headerTitle="Library"/>

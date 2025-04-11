@@ -45,7 +45,7 @@ const InfoScreen = ({setModalVisible, modalVisible}) => {
                         {/* Play game and favorite buttons */}
                         <View className="flex-row justify-around py-10" style={{width: w*0.8}}>
                             {favoriteButton(gameName, tileColor, ()=>{favoriteGame(gameName); setStarShow(starShow+1);}, "star-outline", isLargeScreen)}
-                            {infoScreenButton("Play", tileColor, () => {setModalVisible(false); router.navigate(gamePath);}, "play-circle", isLargeScreen)}
+                            {infoScreenButton("Play", tileColor, () => {setModalVisible(false); router.push(gamePath);}, "play-circle", isLargeScreen)}
                         </View>
                     </View>
                     {/* Exit window button */}
