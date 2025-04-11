@@ -1,6 +1,6 @@
 import ScreenHeader from "@/components/ScreenHeader";
 
-const HelpScreen = () => {
+const HelpScreen = () => {    
     return (
         <ScreenHeader headerTitle="Help"/>
     );
