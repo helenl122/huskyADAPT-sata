@@ -12,7 +12,7 @@ const InfoScreen = ({setModalVisible, modalVisible}) => {
     const router = useRouter(); // for moving to game play
     // using GameTileProps in context (current game data)
     const currGame = useTileContext();
-    const {tileColor, iconName, iconColor, gameName, gamePath, theme, description, switchType, starShow, setStarShow} = currGame;
+    let {tileColor, iconName, iconColor, gameName, gamePath, theme, description, switchType, starShow, setStarShow} = currGame;
     
     return (
         <Modal
@@ -83,6 +83,7 @@ const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => 
         </TouchableOpacity>
     );
 }
+
 // helper function for creating favorite button on info screen
 const favoriteButton = (gameName, tileColor, pressFunc, buttonIcon, showIcon) => {
     // get the game data by game name

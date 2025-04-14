@@ -6,7 +6,8 @@ import TileView from "@/components/TileView";
 import { View } from "react-native";
 
 const LibraryScreen = () => {
-    const [fontsLoaded] = useFonts({DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold});    
+    const [fontsLoaded] = useFonts({DynaPuff_400Regular, DynaPuff_600SemiBold, DynaPuff_700Bold});
+    if (!fontsLoaded) return null; // wait until fontsLoaded to load library
     return (
         <View>
             <ScreenHeader headerTitle="Library"/>

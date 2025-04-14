@@ -37,8 +37,10 @@ const TabLayout = () => {
         {renderTab("FavoritesScreen", "Favorites", "star-outline")}
         {renderTab("SettingsScreen", "Settings", "settings-outline")}
         {renderTab("HelpScreen", "Help", "help-circle-outline")}
-        {/* tab bar settings for games screens*/}
-        <Tabs.Screen name="(games)" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
+        {/* hide tab bar for games screens*/}
+        <Tabs.Screen name="(games)/BalloonGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
+        <Tabs.Screen name="(games)/BlockGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
+        <Tabs.Screen name="(games)/ShapesGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
       </Tabs>
     </SafeAreaView>
   );

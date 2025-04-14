@@ -1,8 +1,12 @@
-import {Text} from "react-native"
+import {Text, View} from "react-native";
+import GameHeader from "@/components/GameHeader"
 
 const ShapesGame = () => {
     return (
-        <Text>Shapes Game</Text>
+        <View>
+            <GameHeader/>
+            <Text>Shapes Game</Text>
+        </View>
     );
 }
 

@@ -47,7 +47,7 @@ const TileView = ({favoriteScreen}) => {
                             setStarShow: setStarShow
                         };
                         return (
-                            <TileContext.Provider value={currGame}>
+                            <TileContext.Provider key={gameName} value={currGame}>
                                 <GameTile/>
                             </TileContext.Provider>
                         );
