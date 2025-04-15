@@ -14,6 +14,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts",
-    "components/*.jsx", "app/(games)/BlockGame.jsx", "components/game_components/SingleButtonPress.jsx",
+    "components/*.jsx", "app/(games)/BlockGame.jsx", "components/game_components/SinglePress.tsx",
   ]
 }

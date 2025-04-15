@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity} from 'react-native';
-import GameHeader from "@/components/GameHeader"
+import {View, TouchableOpacity} from 'react-native';
 
-const SingleButtonPress = ({label, gameContent}) => {
+const SinglePress = ({label, gameContent}) => {
   const [startTime, setStartTime] = useState(null);
   const handlePressIn = () => {setStartTime(Date.now());};
   const handlePressOut = () => {
     if (startTime) {
       const duration = Date.now() - startTime;
-      if (duration >= 800) {
+      if (duration >= 600) {
         console.log("Long press");
       } else {
         console.log("Short press");
@@ -18,19 +17,18 @@ const SingleButtonPress = ({label, gameContent}) => {
 
   return (
     <View className="flex-1">
-      <GameHeader className="absolute top-0 right-0"/>
       <TouchableOpacity
         accessible={true} // marks element as accessible
         accessibilityLabel={label} // what screen reader/switch user hears
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        activeOpacity={1.0} // doesn't change opacity when pressed
-        style={{flex:1, justifyContent:"center", backgroundColor: "blue"}}
+        activeOpacity={0} // no opacity when pressed
+        style={{zIndex:100, flex:1, justifyContent:"center", opacity: 0.2, backgroundColor: "blue"}}
       >
-        {gameContent}
       </TouchableOpacity>
+      <View className="absolute left-0 right-0 top-0 bottom-0">{gameContent}</View>
     </View>
   );
 };
 
-export default SingleButtonPress;
+export default SinglePress;

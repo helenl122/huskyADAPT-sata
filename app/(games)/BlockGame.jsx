@@ -1,16 +1,23 @@
 import {View, Text} from "react-native";
-import SingleButtonpress from "@/components/game_components/SingleButtonPress";
-
+import SinglePress from "@/components/game_components/SinglePress";
+import GameHeader from "@/components/GameHeader"
 
 const BlockGame = () => {
     const renderGame = () => {
-      return <Text>Example Sample</Text>;
+      return (
+        <View className="flex-1 bg-black justify-center items-center">
+          <Text className="text-white">Test Text</Text>
+        </View>
+      );
     }
     return (
-      <SingleButtonpress
-        accessibilityLabel="Press to Play"
-        gameContent={renderGame()}
-      />
+      <View className="flex-1">
+        <GameHeader className="absolute top-0 right-0"/>
+        <SinglePress
+          accessibilityLabel="Press to Play"
+          gameContent={renderGame()}
+        />
+      </View>
     );
 }
 
