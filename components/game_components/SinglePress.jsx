@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import { View, TouchableOpacity} from 'react-native';
 
 const SinglePress = ({label, gameContent}) => {
   const handlePress = () => {
     console.log("Pressed!");
   }
-
   return (
     <View className="flex-1">
       <TouchableOpacity 

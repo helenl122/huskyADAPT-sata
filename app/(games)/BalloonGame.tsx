@@ -1,4 +1,4 @@
-import {Text, View, Keyboard, TouchableOpacity, TextInput} from "react-native";
+import {Text, View} from "react-native";
 import GameHeader from "@/components/GameHeader"
 
 
