@@ -1,6 +1,7 @@
 import {Text, View} from "react-native";
 import GameHeader from "@/components/GameHeader"
 
+
 const BalloonGame = () => {
     return (
         <View>
