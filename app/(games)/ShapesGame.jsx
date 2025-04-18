@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
 import GameHeader from "@/components/GameHeader"
-import ShortLongPress from "@/components/game_components/ShortLongPress";
+import DownUpPress from "@/components/game_components/DownUpPress";
 
 const ShapesGame = () => {
     const renderGame = () => {
@@ -13,7 +13,7 @@ const ShapesGame = () => {
     return (
         <View className="flex-1">
             <GameHeader className="absolute top-0 right-0"/>
-            <ShortLongPress
+            <DownUpPress
                 accessibilityLabel="Press to Play"
                 gameContent={renderGame()}
             />

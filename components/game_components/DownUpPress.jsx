@@ -1,19 +1,8 @@
-import React, { useState } from 'react';
 import {View, TouchableOpacity} from 'react-native';
 
-const SinglePress = ({label, gameContent}) => {
-  const [startTime, setStartTime] = useState(null);
-  const handlePressIn = () => {setStartTime(Date.now());};
-  const handlePressOut = () => {
-    if (startTime) {
-      const duration = Date.now() - startTime;
-      if (duration >= 600) {
-        console.log("Long press");
-      } else {
-        console.log("Short press");
-      }
-    }
-  };
+const DownUpPress = ({label, gameContent}) => {
+  const handlePressIn = () => {console.log("Press Down")};
+  const handlePressOut = () => {console.log("Press Released")};
 
   return (
     <View className="flex-1">
@@ -31,4 +20,4 @@ const SinglePress = ({label, gameContent}) => {
   );
 };
 
-export default SinglePress;
+export default DownUpPress;
