@@ -28,7 +28,7 @@ const GameTile = () => {
                 {(favorite) ?  starOutline(tileSize): null}
                 <MaterialCommunityIcons name={iconName} color={iconColor} size={Math.floor(tileSize/2)}/>
                 <Text
-                    className="p-3 font-dp_bold text-white"
+                    className="p-3 font-fd_bold text-white"
                     style={{
                         fontSize: Math.floor(tileSize/10),
                         textShadowOffset: {width: -3, height: 3},

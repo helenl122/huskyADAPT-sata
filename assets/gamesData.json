@@ -17,7 +17,7 @@
         "iconColor": "#712500",
         "tileColor": "#E96E32",
         "favorite": false,
-        "theme": "Hand-eye Coordination",
+        "theme": "Hand-Eye Coordination",
         "description": "Press the switch to stack blocks as tall as you can!",
         "switchType": "Single-Button Switch"
     },
@@ -39,9 +39,9 @@
         "iconColor": "#5E0C2E",
         "tileColor": "#C75785",
         "favorite": false,
-        "theme": "NA",
-        "description": "NA",
-        "switchType": "NA"
+        "theme": "Exploration",
+        "description": "Press the switch to uncover hidden treasures on the map!",
+        "switchType": "Single-Button Switch"
     },
     {
         "gamePath": "/",
@@ -50,9 +50,9 @@
         "iconColor": "#949DEC",
         "tileColor": "#323973",
         "favorite": false,
-        "theme": "NA",
-        "description": "NA",
-        "switchType": "NA"
+        "theme": "Timing & Motor Planning",
+        "description": "Press the switch to cross the roads and avoid obstacles!",
+        "switchType": "Single-Button Switch"
     },
     {
         "gamePath": "/",
@@ -61,8 +61,8 @@
         "iconColor": "#740600",
         "tileColor": "#FF5F57",
         "favorite": false,
-        "theme": "NA",
-        "description": "NA",
-        "switchType": "NA"
+        "theme": "Creativity",
+        "description": "Press the switch to trigger fun sounds. Experiment with different combinations!",
+        "switchType": "Single-Button Switch"
     }
 ]

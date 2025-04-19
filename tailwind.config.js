@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        dp_reg: ["DynaPuff_400Regular"],
-        dp_semibold: ["DynaPuff_600SemiBold"],
-        dp_bold: ["DynaPuff_700Bold"],
+        fd_reg: ["Fredoka_400Regular"],
+        fd_semibold: ["Fredoka_600SemiBold"],
+        fd_bold: ["Fredoka_700Bold"],
       },
       colors: {
         fontColor: 'black',

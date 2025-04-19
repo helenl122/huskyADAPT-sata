@@ -24,7 +24,7 @@ const TabLayout = () => {
         },
         // tab bar label adjustments
         tabBarLabelStyle: {
-          fontFamily: "DynaPuff_600SemiBold",
+          fontFamily: "Fredoka_600SemiBold",
           width: 50,
         },
         // adjust tab bar position & layout

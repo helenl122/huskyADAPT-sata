@@ -37,11 +37,11 @@ const InfoScreen = ({setModalVisible, modalVisible}) => {
                                             size={(isLargeScreen)? h*0.2 : w*0.2}
                                             color={iconColor}/>
                         : null}
-                        <Text className="font-dp_bold text-2xl md:text-5xl my-3">{gameName}</Text>
+                        <Text className="font-fd_bold text-2xl md:text-5xl my-3">{gameName}</Text>
                         {/* Game Info Details (theme, description, switch type) */}                        
-                        {gameInfoItem("lightbulb", "theme: ", theme)}
-                        {gameInfoItem("format-list-bulleted", "description: ", description)}
-                        {gameInfoItem("gesture-tap-button", "switch: ", switchType)}
+                        {gameInfoItem("lightbulb", "Theme: ", theme)}
+                        {gameInfoItem("format-list-bulleted", "Description: ", description)}
+                        {gameInfoItem("gesture-tap-button", "Switch: ", switchType)}
                         {/* Play game and favorite buttons */}
                         <View className="flex-row justify-around py-10" style={{width: w*0.8}}>
                             {favoriteButton(gameName, tileColor, ()=>{favoriteGame(gameName); setStarShow(starShow+1);}, "star-outline", isLargeScreen)}
@@ -64,8 +64,8 @@ const gameInfoItem = (itemIcon, itemName, itemContent) => {
     return (
         <View className="flex-row justify-center mt-1" style={{width: w*0.8}}>
             <MaterialCommunityIcons className=" mx-1 md:my-1 md:mx-2" name={itemIcon} size={20}/>
-            <Text className="font-dp_semibold text-sm md:text-lg">{itemName}</Text>
-            <Text className="text-wrap mr-5 font-dp_reg text-sm md:text-lg">{itemContent}</Text>
+            <Text className="font-fd_semibold text-sm md:text-lg">{itemName}</Text>
+            <Text className="text-wrap mr-5 font-fd_reg text-sm md:text-lg">{itemContent}</Text>
         </View>
     );
 }
@@ -79,7 +79,7 @@ const infoScreenButton = (title, tileColor, pressFunc, buttonIcon, showIcon) => 
             style={{backgroundColor: tileColor}}
         >
             {(showIcon)? <MaterialCommunityIcons className="mr-2" name={buttonIcon} size={30} color={"white"}/> : null}
-            <Text className="text-white text-2xl font-dp_reg">{title}</Text>
+            <Text className="text-white text-2xl font-fd_reg">{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -100,7 +100,7 @@ const favoriteButton = (gameName, tileColor, pressFunc, buttonIcon, showIcon) =>
             }}
         >
             {(showIcon)? <MaterialCommunityIcons className="mr-2 size-[30]" style={{color: game.favorite? "white" : tileColor}} name={buttonIcon} size={30}/> : null}
-            <Text className="text-2xl font-dp_reg" style={{color: game.favorite ? "white" : tileColor}}>
+            <Text className="text-2xl font-fd_reg" style={{color: game.favorite ? "white" : tileColor}}>
                 {title}
             </Text>
         </TouchableOpacity>
