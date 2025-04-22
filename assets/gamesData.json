@@ -23,7 +23,7 @@
     },
     {
         "gameName": "Sorting Game",
-        "gamePath": "ShapesGame",
+        "gamePath": "ShapeGame",
         "iconName": "shape-outline",
         "iconColor": "#154D00",
         "tileColor": "#6FB256",

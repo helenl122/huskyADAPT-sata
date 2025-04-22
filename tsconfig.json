@@ -16,5 +16,5 @@
     "app/(games)/BlockGame.jsx",
     "app/*/.tsx",
     "components/game_components/SinglePress.tsx"
-  ]
+, "app/(games)/BalloonGame.jsx"  ]
 }

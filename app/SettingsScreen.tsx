@@ -1,8 +1,11 @@
 import ScreenHeader from "@/components/ScreenHeader";
+import {View} from "react-native";
 
 const SettingsScreen = () => {
     return (
-        <ScreenHeader headerTitle="Settings"/>
+        <View>
+            <ScreenHeader headerTitle="Settings"/>
+        </View>
     );
 }
 
