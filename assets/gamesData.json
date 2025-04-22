@@ -1,7 +1,7 @@
 [
     {
-        "gamePath": "BalloonGame",
         "gameName": "Pop The Balloon",
+        "gamePath": "BalloonGame",
         "iconName": "balloon",
         "iconColor": "#005463",
         "tileColor": "#32C1DA",
@@ -11,8 +11,8 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "BlockGame",
         "gameName": "Stacking Blocks",
+        "gamePath": "BlockGame",
         "iconName": "grid",
         "iconColor": "#712500",
         "tileColor": "#E96E32",
@@ -22,8 +22,8 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "ShapesGame",
         "gameName": "Sorting Game",
+        "gamePath": "ShapeGame",
         "iconName": "shape-outline",
         "iconColor": "#154D00",
         "tileColor": "#6FB256",
@@ -33,8 +33,8 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "/",
         "gameName": "Treasure Hunt",
+        "gamePath": "/",
         "iconName": "shovel",
         "iconColor": "#5E0C2E",
         "tileColor": "#C75785",
@@ -44,8 +44,8 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "/",
         "gameName": "Crossy Roads",
+        "gamePath": "/",
         "iconName": "road-variant",
         "iconColor": "#949DEC",
         "tileColor": "#323973",
@@ -55,8 +55,8 @@
         "switchType": "Single-Button Switch"
     },
     {
-        "gamePath": "/",
         "gameName": "Music Play",
+        "gamePath": "/",
         "iconName": "music",
         "iconColor": "#740600",
         "tileColor": "#FF5F57",

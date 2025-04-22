@@ -1,19 +1,19 @@
 import {Text, View} from "react-native";
 import GameHeader from "@/components/GameHeader"
-import DownUpPress from "@/components/game_components/DownUpPress";
+import SinglePress from "@/components/game_components/SinglePress";
 
-const ShapesGame = () => {
+const BalloonGame = () => {      
     const renderGame = () => {
-        return (
+        return ( // TODO: render game components in return of this function
           <View className="flex-1 bg-black justify-center items-center">
-            <Text className="text-white">Shapes Game</Text>
+            <Text className="text-white">Balloon Game</Text>
           </View>
         );
     }
-    return (
+    return ( // game screen main structure: header & pressable area
         <View className="flex-1">
             <GameHeader className="absolute top-0 right-0"/>
-            <DownUpPress
+            <SinglePress
                 accessibilityLabel="Press to Play"
                 gameContent={renderGame()}
             />
@@ -21,4 +21,4 @@ const ShapesGame = () => {
     );
 }
 
-export default ShapesGame;
+export default BalloonGame;

@@ -40,7 +40,7 @@ const TabLayout = () => {
         {/* hide tab bar for games screens*/}
         <Tabs.Screen name="(games)/BalloonGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
         <Tabs.Screen name="(games)/BlockGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
-        <Tabs.Screen name="(games)/ShapesGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
+        <Tabs.Screen name="(games)/ShapeGame" options={{ href: null, headerShown: false, tabBarStyle: {display: "none"}}}/>
       </Tabs>
     </SafeAreaView>
   );
