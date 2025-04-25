@@ -8,10 +8,19 @@ const BalloonGame = () => {
 
   // Function to handle the press anywhere on the screen
   const handlePressAnywhere = () => {
-    // Generate a random index between 0 and 7 (since there are 8 balloons)
-    const randomIndex = Math.floor(Math.random() * 8);
+    // Get indexes of balloons that haven't been popped
+    const unpoppedIndexes = popped
+      .map((isPopped, index) => (!isPopped ? index : null))
+      .filter(index => index !== null);
 
-    // Mark that random balloon as popped
+    // If all balloons are popped, do nothing
+    if (unpoppedIndexes.length === 0) return;
+
+    // Pick a random unpopped balloon index
+    const randomIndex =
+      unpoppedIndexes[Math.floor(Math.random() * unpoppedIndexes.length)];
+
+    // Mark the selected balloon as popped
     const newPopped = [...popped];
     newPopped[randomIndex] = true;
     setPopped(newPopped);
@@ -36,8 +45,8 @@ const BalloonGame = () => {
         source={require('./Assets/backgroundimage.png')}
         resizeMode="cover"
         style={{ flex: 1 }}
-        onStartShouldSetResponder={() => true} // Enable press anywhere on the screen
-        onResponderRelease={handlePressAnywhere} // Handle the press event
+        onStartShouldSetResponder={() => true}
+        onResponderRelease={handlePressAnywhere}
       >
         {balloonPositions.map((position, index) => (
           <Pressable
@@ -57,9 +66,9 @@ const BalloonGame = () => {
                 source={require('./Assets/balloon.png')}
                 style={{
                   width: 100,
-                  height: 150, // Adjust the height based on the image's aspect ratio
+                  height: 150,
                   borderRadius: 12,
-                  resizeMode: 'contain' // Ensure the balloon doesn't get cropped
+                  resizeMode: 'contain'
                 }}
               />
             )}
