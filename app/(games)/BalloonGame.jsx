@@ -1,39 +1,73 @@
 import React, { useState } from "react";
-import { Text, View, Image, Pressable, ImageBackground} from "react-native";
+import { Text, View, Image, Pressable, ImageBackground } from "react-native";
 import GameHeader from "@/components/GameHeader";
 
 const BalloonGame = () => {
-  const [popped, setPopped] = useState(false);
+  // Initialize the state to track the popped status of each balloon (8 balloons in total)
+  const [popped, setPopped] = useState(Array(8).fill(false));
 
+  // Function to handle the press anywhere on the screen
+  const handlePressAnywhere = () => {
+    // Generate a random index between 0 and 7 (since there are 8 balloons)
+    const randomIndex = Math.floor(Math.random() * 8);
+
+    // Mark that random balloon as popped
+    const newPopped = [...popped];
+    newPopped[randomIndex] = true;
+    setPopped(newPopped);
+  };
+
+  // Function to render the game screen with 8 balloons
   const renderGame = () => {
+    // Array to hold the 8 balloons with random positions and the popped status
+    const balloonPositions = [
+      { top: '10%', left: '10%' },
+      { top: '20%', left: '50%' },
+      { top: '30%', left: '30%' },
+      { top: '40%', left: '60%' },
+      { top: '50%', left: '20%' },
+      { top: '60%', left: '70%' },
+      { top: '70%', left: '40%' },
+      { top: '80%', left: '80%' }
+    ];
+
     return (
       <ImageBackground
         source={require('./Assets/backgroundimage.png')}
         resizeMode="cover"
-        className="flex-1"
+        style={{ flex: 1 }}
+        onStartShouldSetResponder={() => true} // Enable press anywhere on the screen
+        onResponderRelease={handlePressAnywhere} // Handle the press event
       >
-        <Pressable
-          onPress={() => setPopped(true)}
-          className="flex-1 justify-center items-center"
-        >
-          {popped ? (
-            <Text className="text-2xl font-bold">popped</Text>
-          ) : (
-            <Image
-              source={require('./Assets/balloon.png')}
-              className="w-40 h-40 rounded-xl"
-            />
-          )}
-        </Pressable>
+        {balloonPositions.map((position, index) => (
+          <Pressable
+            key={index}
+            style={{
+              position: 'absolute',
+              top: position.top,
+              left: position.left,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {popped[index] ? (
+              <Text style={{ fontSize: 24, fontWeight: 'bold' }}>popped</Text>
+            ) : (
+              <Image
+                source={require('./Assets/balloon.png')}
+                style={{ width: 100, height: 100, borderRadius: 12 }}
+              />
+            )}
+          </Pressable>
+        ))}
       </ImageBackground>
     );
   };
-  
 
   return (
-    <View className="flex-1">
-      <GameHeader className="absolute top-0 right-0" />
-       {renderGame()}
+    <View style={{ flex: 1 }}>
+      <GameHeader style={{ position: 'absolute', top: 0, right: 0 }} />
+      {renderGame()}
     </View>
   );
 };
