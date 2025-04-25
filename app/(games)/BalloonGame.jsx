@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, Pressable, ImageBackground} from "react-native";
 import GameHeader from "@/components/GameHeader";
 
 const BalloonGame = () => {
@@ -7,21 +7,28 @@ const BalloonGame = () => {
 
   const renderGame = () => {
     return (
-      <Pressable
-        onPress={() => setPopped(true)}
-        className="flex-1 bg-pink-100 justify-center items-center"
+      <ImageBackground
+        source={require('./Assets/backgroundimage.png')}
+        resizeMode="cover"
+        className="flex-1"
       >
-        {popped ? (
-          <Text className="text-2xl font-bold">popped</Text>
-        ) : (
-          <Image
-            source={require('./Assets/balloon.png')}
-            className="w-40 h-40 rounded-xl"
-          />
-        )}
-      </Pressable>
+        <Pressable
+          onPress={() => setPopped(true)}
+          className="flex-1 justify-center items-center"
+        >
+          {popped ? (
+            <Text className="text-2xl font-bold">popped</Text>
+          ) : (
+            <Image
+              source={require('./Assets/balloon.png')}
+              className="w-40 h-40 rounded-xl"
+            />
+          )}
+        </Pressable>
+      </ImageBackground>
     );
   };
+  
 
   return (
     <View className="flex-1">
