@@ -1,46 +1,75 @@
-import React, { useState } from "react";
-import { Text, View, Image, Pressable, ImageBackground } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, Image, Pressable, ImageBackground, Dimensions } from "react-native";
 import GameHeader from "@/components/GameHeader";
 
-const BalloonGame = () => {
-  // Initialize the state to track the popped status of each balloon (8 balloons in total)
-  const [popped, setPopped] = useState(Array(8).fill(false));
+const { width, height } = Dimensions.get("window");
 
-  // Function to handle the press anywhere on the screen
+const generateRandomPositions = (count) => {
+  const cellCount = 8;
+  const padding = 20; // Padding within each cell
+  const usedCells = new Set();
+
+  const getRandomCell = () => {
+    let cell;
+    do {
+      cell = Math.floor(Math.random() * cellCount);
+    } while (usedCells.has(cell));
+    usedCells.add(cell);
+    return cell;
+  };
+
+  const positions = [];
+
+  for (let i = 0; i < count; i++) {
+    const cell = getRandomCell();
+    const col = cell % 4; // 4 columns
+    const row = Math.floor(cell / 4); // 2 rows
+
+    const cellWidth = width / 4;
+    const cellHeight = height / 2;
+
+    const maxBalloonWidth = 100;
+    const maxBalloonHeight = 150;
+
+    const left = col * cellWidth + padding + Math.random() * (cellWidth - 2 * padding - maxBalloonWidth);
+    const top = row * cellHeight + padding + Math.random() * (cellHeight - 2 * padding - maxBalloonHeight);
+
+    positions.push({
+      top: `${(top / height) * 100}%`,
+      left: `${(left / width) * 100}%`
+    });
+  }
+
+  return positions;
+};
+
+const BalloonGame = () => {
+  const [popped, setPopped] = useState(Array(8).fill(false));
+  const [positions, setPositions] = useState([]);
+
+  useEffect(() => {
+    // Generate balloon positions only once on mount
+    setPositions(generateRandomPositions(8));
+  }, []);
+
   const handlePressAnywhere = () => {
-    // Get indexes of balloons that haven't been popped
     const unpoppedIndexes = popped
       .map((isPopped, index) => (!isPopped ? index : null))
       .filter(index => index !== null);
 
-    // If all balloons are popped, do nothing
     if (unpoppedIndexes.length === 0) return;
 
-    // Pick a random unpopped balloon index
     const randomIndex =
       unpoppedIndexes[Math.floor(Math.random() * unpoppedIndexes.length)];
 
-    // Mark the selected balloon as popped
     const newPopped = [...popped];
     newPopped[randomIndex] = true;
     setPopped(newPopped);
   };
 
-  // Function to render the game screen with 8 balloons
-  const renderGame = () => {
-    // Array to hold the 8 balloons with random positions and the popped status
-    const balloonPositions = [
-      { top: '10%', left: '10%' },
-      { top: '20%', left: '50%' },
-      { top: '30%', left: '30%' },
-      { top: '40%', left: '60%' },
-      { top: '50%', left: '20%' },
-      { top: '60%', left: '70%' },
-      { top: '70%', left: '40%' },
-      { top: '80%', left: '80%' }
-    ];
-
-    return (
+  return (
+    <View style={{ flex: 1 }}>
+      <GameHeader style={{ position: 'absolute', top: 0, right: 0 }} />
       <ImageBackground
         source={require('./Assets/backgroundimage.png')}
         resizeMode="cover"
@@ -48,7 +77,7 @@ const BalloonGame = () => {
         onStartShouldSetResponder={() => true}
         onResponderRelease={handlePressAnywhere}
       >
-        {balloonPositions.map((position, index) => (
+        {positions.map((position, index) => (
           <Pressable
             key={index}
             style={{
@@ -75,13 +104,6 @@ const BalloonGame = () => {
           </Pressable>
         ))}
       </ImageBackground>
-    );
-  };
-
-  return (
-    <View style={{ flex: 1 }}>
-      <GameHeader style={{ position: 'absolute', top: 0, right: 0 }} />
-      {renderGame()}
     </View>
   );
 };
