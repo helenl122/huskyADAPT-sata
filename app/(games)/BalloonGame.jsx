@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get("window");
 
 const generateRandomPositions = (count) => {
   const cellCount = 8;
-  const padding = 20; // Padding within each cell
+  const padding = 20;
   const usedCells = new Set();
 
   const getRandomCell = () => {
@@ -22,8 +22,8 @@ const generateRandomPositions = (count) => {
 
   for (let i = 0; i < count; i++) {
     const cell = getRandomCell();
-    const col = cell % 4; // 4 columns
-    const row = Math.floor(cell / 4); // 2 rows
+    const col = cell % 4;
+    const row = Math.floor(cell / 4);
 
     const cellWidth = width / 4;
     const cellHeight = height / 2;
@@ -48,7 +48,6 @@ const BalloonGame = () => {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    // Generate balloon positions only once on mount
     setPositions(generateRandomPositions(8));
   }, []);
 
@@ -80,6 +79,7 @@ const BalloonGame = () => {
         {positions.map((position, index) => (
           <Pressable
             key={index}
+            onPress={handlePressAnywhere} // <- This makes balloons tappable!
             style={{
               position: 'absolute',
               top: position.top,
