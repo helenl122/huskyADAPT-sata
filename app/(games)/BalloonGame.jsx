@@ -1,24 +1,34 @@
-import {Text, View} from "react-native";
-import GameHeader from "@/components/GameHeader"
-import SinglePress from "@/components/game_components/SinglePress";
+import React, { useState } from "react";
+import { Text, View, Image, Pressable } from "react-native";
+import GameHeader from "@/components/GameHeader";
 
-const BalloonGame = () => {      
-    const renderGame = () => {
-        return ( // TODO: render game components in return of this function
-          <View className="flex-1 bg-black justify-center items-center">
-            <Text className="text-white">Balloon Game</Text>
-          </View>
-        );
-    }
-    return ( // game screen main structure: header & pressable area
-        <View className="flex-1">
-            <GameHeader className="absolute top-0 right-0"/>
-            <SinglePress
-                accessibilityLabel="Press to Play"
-                gameContent={renderGame()}
-            />
-        </View>
+const BalloonGame = () => {
+  const [popped, setPopped] = useState(false);
+
+  const renderGame = () => {
+    return (
+      <Pressable
+        onPress={() => setPopped(true)}
+        className="flex-1 bg-pink-100 justify-center items-center"
+      >
+        {popped ? (
+          <Text className="text-2xl font-bold">popped</Text>
+        ) : (
+          <Image
+            source={require('./Assets/balloon.png')}
+            className="w-40 h-40 rounded-xl"
+          />
+        )}
+      </Pressable>
     );
-}
+  };
+
+  return (
+    <View className="flex-1">
+      <GameHeader className="absolute top-0 right-0" />
+       {renderGame()}
+    </View>
+  );
+};
 
 export default BalloonGame;
