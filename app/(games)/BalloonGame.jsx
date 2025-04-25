@@ -20,23 +20,23 @@ const generateRandomPositions = (count) => {
 
   const positions = [];
 
+  // Adjusting cell width/height relative to screen dimensions
+  const cellWidth = width / 4; // Divide screen width by 4 columns
+  const cellHeight = height / 2; // Divide screen height by 2 rows
+  const maxBalloonWidth = 100;
+  const maxBalloonHeight = 150;
+
   for (let i = 0; i < count; i++) {
     const cell = getRandomCell();
     const col = cell % 4;
     const row = Math.floor(cell / 4);
 
-    const cellWidth = width / 4;
-    const cellHeight = height / 2;
-
-    const maxBalloonWidth = 100;
-    const maxBalloonHeight = 150;
-
     const left = col * cellWidth + padding + Math.random() * (cellWidth - 2 * padding - maxBalloonWidth);
     const top = row * cellHeight + padding + Math.random() * (cellHeight - 2 * padding - maxBalloonHeight);
 
     positions.push({
-      top: `${(top / height) * 100}%`,
-      left: `${(left / width) * 100}%`
+      top: `${(top / height) * 100}%`, // Percentage of screen height
+      left: `${(left / width) * 100}%` // Percentage of screen width
     });
   }
 
@@ -66,13 +66,17 @@ const BalloonGame = () => {
     setPopped(newPopped);
   };
 
+  // Dynamic balloon size based on screen size
+  const balloonWidth = Math.min(width / 6, 100);  // Set max width relative to screen width
+  const balloonHeight = Math.min(height / 6, 150); // Set max height relative to screen height
+
   return (
     <View style={{ flex: 1 }}>
       <GameHeader style={{ position: 'absolute', top: 0, right: 0 }} />
       <ImageBackground
         source={require('./Assets/backgroundimage.png')}
         resizeMode="cover"
-        style={{ flex: 1 }}
+        style={{ flex: 1, width: '100%', height: '100%' }}
         onStartShouldSetResponder={() => true}
         onResponderRelease={handlePressAnywhere}
       >
@@ -94,8 +98,8 @@ const BalloonGame = () => {
               <Image
                 source={require('./Assets/balloon.png')}
                 style={{
-                  width: 100,
-                  height: 150,
+                  width: balloonWidth,
+                  height: balloonHeight,
                   borderRadius: 12,
                   resizeMode: 'contain'
                 }}
